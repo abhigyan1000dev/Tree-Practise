@@ -1,0 +1,59 @@
+// Recursive Approach
+
+// Just Calculate the Height
+
+
+int calcHeightbyRecursion(TreeNode *root)
+  {
+      if(root==NULL) 
+      {
+      return 0;
+      }
+
+      int leftHeight=calcHeightbyRecursion(root->left);
+      int rigthtHeight=calcHeightbyRecursion(root->right);
+
+      return max(leftHeigt,rightHeight)+1;
+
+}
+
+
+//Iterative Approach : Level Order Traversal Just Calculate the Levels That would be the max Depth 
+
+int calcHeightbyIteration(TreeNode *root)
+{
+       
+       //base case
+       if(root==NULL)
+       {
+          return 0;
+       }
+  
+  
+      //Create a Queue
+      queue<TreeNode*>q;
+      q.push(root);
+       int ans=0 // for storing the levels
+       int count=q.size();  // for storing the quueue size 
+       
+       
+       while(!q.empty())
+       {
+            ans++; // just increment the level
+            count=q.size(); //phle 1 phir 2 phir....
+
+           while(count--)   // for this particular level
+           {
+              curr=q.front();
+              if(curr->left) q.push(curr->left);
+              if(curr->right) q.push(curr->right);
+              q.pop();
+            }
+      
+      }
+
+
+
+
+
+
